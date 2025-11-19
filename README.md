@@ -1,15 +1,11 @@
-# LLM Instruction Data Preparation
+# LLM Data Tokenization & Finetuning Pipeline
 
-This repository contains a Jupyter notebook for preparing an instruction–response
-dataset and tokenizing it with Hugging Face `transformers` and `datasets`.
-It demonstrates:
+Jupyter notebooks for preparing instruction–response datasets and finetuning
+a causal language model using Hugging Face `datasets` and `transformers`.
 
-- Basic tokenization (single text and batches)
-- Padding and truncation behavior
-- Building an instruction dataset from a JSONL file (`lamini_docs.jsonl`)
-- Applying a prompt template to questions
-- Creating a Hugging Face `Dataset`
-- Tokenizing the dataset and preparing it for finetuning (including labels and train/test split)
+The project uses the `lamini/lamini_docs` dataset and `EleutherAI/pythia-70m`
+as a base model to demonstrate an end-to-end workflow:
+data preparation → tokenization → training → saving a finetuned model.
 
 ## Project structure
 
@@ -19,5 +15,6 @@ It demonstrates:
 ├─ requirements.txt
 ├─ .gitignore
 ├─ data/
-│  └─ lamini_docs.jsonl        # input JSONL file (not included by default)
-└─ data_preparation.ipynb      # main notebook
+│  └─ lamini_docs.jsonl        # optional local data (not in repo)
+├─ data_preparation.ipynb
+└─ llm_finetuning_lamini_docs.ipynb

@@ -1,30 +1,38 @@
-# LLM Data Tokenization & Finetuning Pipeline
+# LLM Training, Fine-Tuning & Evaluation Pipeline
 
-Jupyter notebooks for preparing instruction–response datasets and finetuning
-a causal language model using Hugging Face `datasets` and `transformers`.
+This repository provides an end-to-end workflow for training and fine-tuning a Causal Language Model (LLM) using Hugging Face `datasets` and `transformers`.  
+It covers the complete process used in real LLM engineering projects: data preparation, tokenization, model training, and iterative evaluation.
 
-The project uses the `lamini/lamini_docs` dataset and `EleutherAI/pythia-70m`
-as a base model to demonstrate an end-to-end workflow:
-data preparation → tokenization → training → saving a finetuned model.
+The pipeline uses:
 
-- **evaluation_iteration.ipynb**  
-  Contains steps for evaluating the finetuned model, comparing outputs from the base model vs. the trained model, and performing iterative improvements. Includes prompt testing, qualitative evaluation, and guideline suggestions for dataset refinement.
+- **Dataset:** `lamini/lamini_docs`
+- **Base Model:** `EleutherAI/pythia-70m` (lightweight, great for learning)
+- **Frameworks:** Hugging Face `transformers`, `datasets`, and PyTorch
 
+---
 
-## Project structure
+## 🚀 Project Highlights
+
+- Clean workflow for LLM dataset preparation and prompt formatting  
+- Tokenization using `AutoTokenizer` and Hugging Face `Dataset`  
+- Fine-tuning a GPT-style model using `Trainer`  
+- Saving and loading finetuned models  
+- Qualitative evaluation comparing **base vs. finetuned** outputs  
+- Iteration process for improving dataset quality and model performance  
+
+---
+
+## 📁 Project Structure
 
 ```text
 .
-LLM-data-tokenization-pipeline/
+├─ README.md
+├─ requirements.txt
+├─ .gitignore
 │
-├── README.md
-├── requirements.txt
-├── .gitignore
+├─ data/                    # local data folder (ignored in git)
+│   └── lamini_docs.jsonl   # example dataset (not included)
 │
-├── data/
-│   └── lamini_docs.jsonl   (ignored)
-│
-├── data_preparation.ipynb
-├── llm_finetuning_lamini_docs.ipynb
-└── evaluation_iteration.ipynb
-
+├─ data_preparation.ipynb               # Data extraction, JSONL parsing & tokenization
+├─ llm_finetuning_lamini_docs.ipynb     # Fine-tuning Pythia-70m on lamini_docs
+└─ evaluation_iteration.ipynb           # Model evaluation & iterative refinement

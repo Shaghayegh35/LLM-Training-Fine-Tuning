@@ -1,24 +1,31 @@
 # LLM Training, Fine-Tuning & Evaluation Pipeline
 
-This repository provides an end-to-end workflow for training and fine-tuning a Causal Language Model (LLM) using Hugging Face `datasets` and `transformers`.  
-It covers the complete process used in real LLM engineering projects: data preparation, tokenization, model training, and iterative evaluation.
+This repository provides an end-to-end workflow for training, fine-tuning, and evaluating  
+a Causal Language Model (LLM) using Hugging Face `transformers`, `datasets`, PyTorch,  
+and parameter-efficient fine-tuning (LoRA).
+
+It includes everything needed to understand how modern LLM pipelines work—  
+from raw data → tokenization → full fine-tuning → LoRA → evaluation → iteration.
 
 The pipeline uses:
 
 - **Dataset:** `lamini/lamini_docs`
-- **Base Model:** `EleutherAI/pythia-70m` (lightweight, great for learning)
-- **Frameworks:** Hugging Face `transformers`, `datasets`, and PyTorch
+- **Base Model:** `EleutherAI/pythia-70m` (lightweight, ideal for learning)
+- **Fine-Tuning Methods:** Full training + LoRA
+- **Frameworks:** Hugging Face `transformers`, `datasets`, `peft`, `accelerate`
 
 ---
 
 ## 🚀 Project Highlights
 
-- Clean workflow for LLM dataset preparation and prompt formatting  
-- Tokenization using `AutoTokenizer` and Hugging Face `Dataset`  
-- Fine-tuning a GPT-style model using `Trainer`  
-- Saving and loading finetuned models  
-- Qualitative evaluation comparing **base vs. finetuned** outputs  
-- Iteration process for improving dataset quality and model performance  
+- Build instruction–response datasets from JSONL or Hugging Face datasets  
+- Tokenize data and prepare training splits  
+- Fine-tune GPT-style models using Hugging Face `Trainer`  
+- Apply **LoRA (Low-Rank Adaptation)** for parameter-efficient training  
+- Save and load trained models  
+- Evaluate base vs. finetuned models  
+- Iteratively refine prompts and dataset quality  
+- Lightweight notebooks ideal for students & job portfolios  
 
 ---
 
@@ -30,9 +37,10 @@ The pipeline uses:
 ├─ requirements.txt
 ├─ .gitignore
 │
-├─ data/                    # local data folder (ignored in git)
-│   └── lamini_docs.jsonl   # example dataset (not included)
+├─ data/                    
+│   └── lamini_docs.jsonl   # (ignored) example dataset
 │
-├─ data_preparation.ipynb               # Data extraction, JSONL parsing & tokenization
-├─ llm_finetuning_lamini_docs.ipynb     # Fine-tuning Pythia-70m on lamini_docs
-└─ evaluation_iteration.ipynb           # Model evaluation & iterative refinement
+├─ data_preparation.ipynb               # Build & tokenize instruction dataset
+├─ llm_finetuning_lamini_docs.ipynb     # Full fine-tuning of Pythia-70M
+├─ evaluation_iteration.ipynb           # Evaluation & comparison of models
+└─ fine_tune_with_LoRA.ipynb            # NEW: LoRA fine-tuning workflow
